@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{% block title %}{% endblock %}</title>
+    {% load static %}
+    <style>
+        body, input, textarea, select {
+            font-family: 'Open Sans', sans-serif;
+            font-size: 16px;
+        }
+        
+        body {
+            margin: 0px;
+        }
+        
+        #header-store {
+            height: 50px;
+            background-color: #212529;
+        }
+        
+        #medicines-label {
+            text-decoration: none;
+            color: white;
+            font-size: 23px;
+            font-weight: 550;
+            position: relative;
+            top: 7px;
+            left: 18%;
+        }
+    </style>
+</head>
+<body>
+    <header id="header-store">
+        <a href="/" id="medicines-label">Medicines</a>
+    </header>
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+</body>
+</html>

@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Medicines
+{% endblock %}
+
+{% block content %}
+<style>
+    #filters {
+        position: absolute; 
+        left: 0; 
+        top: 100; 
+        width: 17%;
+        height: 100%;
+        background-color: pink;
+    }
+    #main { 
+        position: absolute; 
+        right: 0; 
+        top: 100; 
+        width: 83%;
+        height: 100%;
+        background-color: grey;
+    }
+</style>
+<div id='filters'>
+</div>
+<div id='main'>
+</div>
+{% endblock %}
