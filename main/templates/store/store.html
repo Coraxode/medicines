@@ -20,11 +20,25 @@ Medicines
         top: 100; 
         width: 83%;
         height: 100%;
-        background-color: grey;
     }
 </style>
 <div id='filters'>
 </div>
 <div id='main'>
+    {% for p in medicines %}
+    {{ p.id }} <br>
+    {{ p.name }} <br>
+    {{ p.price }} <br>
+    {{ p.photo }} <br>
+    {{ p.is_prescription_required }} <br>
+    {{ p.date_of_manufacture }} <br>
+    {{ p.service_life }} <br>
+    {{ p.description }} <br>
+    {{ p.quantity }} <br><br>
+    {{ p.category }} <br>
+    {{ p.form }} <br>
+    {{ p.manufacturer }} <br>
+    {{ p.country_of_origin }} <br>
+    {% endfor %}
 </div>
 {% endblock %}
