@@ -6,7 +6,6 @@ def index(request):
     medicine_info = []
 
     for medicine in Medicine.objects.all():
-        print(medicine.category.first())
         medicine_info.append({
             # 'id': medicine.id,
             'name': medicine.name,

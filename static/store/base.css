@@ -1,0 +1,23 @@
+body, input, textarea, select {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 16px;
+}
+
+body {
+    margin: 0px;
+}
+
+#header-store {
+    height: 50px;
+    background-color: #212529;
+}
+
+#medicines-label {
+    text-decoration: none;
+    color: white;
+    font-size: 23px;
+    font-weight: 550;
+    position: relative;
+    top: 7px;
+    left: 18%;
+}

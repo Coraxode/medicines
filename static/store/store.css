@@ -1,0 +1,28 @@
+#filters {
+    position: absolute; 
+    left: 0; 
+    top: 100; 
+    width: 17%;
+    height: 100%;
+    background-color: pink;
+}
+#main { 
+    position: absolute; 
+    right: 0; 
+    top: 100; 
+    width: 83%;
+    height: 100%;
+}
+#content {
+    display: block;
+    padding: 15px;
+}
+.medicine {
+    display: inline-block;
+    width: 175px; 
+    border: 1px solid black;
+    border-radius: 0.4em;
+    padding: 5px;
+    margin: 5px;
+    font-size: 14px;
+}
