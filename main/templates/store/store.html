@@ -21,24 +21,31 @@ Medicines
         width: 83%;
         height: 100%;
     }
+    #content {
+        display: block;
+        padding: 15px;
+    }
+    .medicine {
+        display: inline-block;
+        width: 175px; 
+        border: 1px solid black;
+        border-radius: 0.4em;
+        padding: 5px;
+        margin: 5px;
+        font-size: 14px;
+    }
 </style>
 <div id='filters'>
 </div>
 <div id='main'>
-    {% for p in medicines %}
-    {{ p.id }} <br>
-    {{ p.name }} <br>
-    {{ p.price }} <br>
-    {{ p.photo }} <br>
-    {{ p.is_prescription_required }} <br>
-    {{ p.date_of_manufacture }} <br>
-    {{ p.service_life }} <br>
-    {{ p.description }} <br>
-    {{ p.quantity }} <br><br>
-    {{ p.category }} <br>
-    {{ p.form }} <br>
-    {{ p.manufacturer }} <br>
-    {{ p.country_of_origin }} <br>
-    {% endfor %}
+    <div id='content'>
+        {% for p in medicines %}
+            <div class='medicine'>
+                <img src="{{ p.photo }}" width="175" height="175"/> <br>
+                <label style='font-weight: 450;'>{{ p.name }}</label> <br><br>
+                <label style='font-size: 17px; font-weight: 600;'>{{ p.price }} грн</label>
+            </div>
+        {% endfor %}
+    </div>
 </div>
 {% endblock %}
