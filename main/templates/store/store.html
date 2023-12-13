@@ -10,7 +10,7 @@ Medicines
 <div id='main'>
     <div id='content'>
         {% for p in medicines %}
-            <div class='medicine'>
+            <div class='medicine' onclick="location.href='/medicine/{{ p.id }}/';">
                 <img src="{{ p.photo }}" width="175" height="175"/> <br>
                 <label style='font-weight: 450;'>{{ p.name }}</label> <br><br>
                 <label style='font-size: 17px; font-weight: 600;'>{{ p.price }} грн</label>
