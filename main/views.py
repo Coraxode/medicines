@@ -21,4 +21,15 @@ def store(request):
 
 
 def medicine_page(request, id):
-    return render(request, 'store/medicine.html')
+    medicine = Medicine.objects.get(id=id)
+    medicine_info = {
+        'id': medicine.id,
+        'name': medicine.name,
+        'photo': medicine.photo,
+        'price': medicine.price,
+        'category': medicine.category.first(),
+        'form': medicine.form.first(),
+        'manufacturer': medicine.manufacturer.first(),
+        'country_of_origin': medicine.country_of_origin.first(),
+    }
+    return render(request, 'store/medicine.html', {'medicine': medicine_info})
