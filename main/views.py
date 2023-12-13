@@ -7,9 +7,16 @@ def index(request):
 
 
 def store(request):
-    medicine_info = []
+    medicines = Medicine.objects.filter(name__icontains=request.GET.get('name', ''),
+                                        price__range=(request.GET.get('minp', 0), request.GET.get('maxp', 100000)),
+                                        category__in=request.GET.get('category', ','.join([str(i) for i in range(20)])).split(','),
+                                        form__in=request.GET.get('form', ','.join([str(i) for i in range(20)])).split(','),
+                                        country_of_origin__in=request.GET.get('country', ','.join([str(i) for i in range(20)])).split(','),
+                                        is_prescription_required__in=request.GET.get('prescription', '0,1').split(','),
+                                        )
 
-    for medicine in Medicine.objects.all():
+    medicine_info = []
+    for medicine in medicines:
         medicine_info.append({
             'id': medicine.id,
             'name': medicine.name,
