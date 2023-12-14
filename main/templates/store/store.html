@@ -7,13 +7,13 @@ Medicines
 {% block content %}
 <div id='filters'>
     <div id='search-block'>
-        <input type='text' placeholder='Пошук'>
+        <input type='text' id='search' placeholder='Пошук' onsubmit='alert1()'>
     </div>
     <div id='price-block'>
         <p style='margin-bottom: 5px;'>Ціна від:</p>
-        <input type='text' placeholder='{{ add_info.min_price }}'>
+        <input type='text' id='minp' placeholder='{{ add_info.min_price }}'>
         <p style='display: inline;'>До</p>
-        <input type='text' placeholder='{{ add_info.max_price }}'>
+        <input type='text' id='maxp' placeholder='{{ add_info.max_price }}'>
     </div>
     <div id='category-block'>
         <p style='margin-bottom: 5px;'>Категорія:</p>
@@ -44,6 +44,7 @@ Medicines
         <label for='prescription_0'>Ні</label> <br>
     </div>
     <script>set_filters("{{ add_info.param_list }}")</script>
+    <script>add_search_event()</script>
 </div>
 <div id='main'>
     <div id='content'>
