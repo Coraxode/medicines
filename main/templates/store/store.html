@@ -6,7 +6,44 @@ Medicines
 
 {% block content %}
 <div id='filters'>
-    
+    <div id='search-block'>
+        <input type='text' placeholder='Пошук'>
+    </div>
+    <div id='price-block'>
+        <p style='margin-bottom: 5px;'>Ціна від:</p>
+        <input type='text' placeholder='{{ add_info.min_price }}'>
+        <p style='display: inline;'>До</p>
+        <input type='text' placeholder='{{ add_info.max_price }}'>
+    </div>
+    <div id='category-block'>
+        <p style='margin-bottom: 5px;'>Категорія:</p>
+        {% for category in add_info.categories %}
+            <input type='checkbox' id='category_{{ category.0 }}' onclick="change_param('category', {{ category.0 }})">
+            <label for='category_{{ category.0 }}'>{{ category.1 }}</label> <br>
+        {% endfor %}
+    </div>
+    <div id='form-block'>
+        <p style='margin-bottom: 5px;'>Форма:</p>
+        {% for form in add_info.forms %}
+            <input type='checkbox' id='form_{{ form.0 }}' onclick="change_param('form', {{ form.0 }})">
+            <label for='form_{{ form.0 }}'>{{ form.1 }}</label> <br>
+        {% endfor %}
+    </div>
+    <div id='country-block'>
+        <p style='margin-bottom: 5px;'>Країна:</p>
+        {% for country in add_info.countries %}
+            <input type='checkbox' id='country_{{ country.0 }}' onclick="change_param('country', {{ country.0 }})">
+            <label for='country_{{ country.0 }}'>{{ country.1 }}</label> <br>
+        {% endfor %}
+    </div>
+    <div id='prescription-block'>
+        <p style='margin-bottom: 5px;'>Чи потрібна наявність рецепту:</p>
+        <input type='checkbox' id='prescription_1' onclick="change_param('prescription', 1)">
+        <label for='prescription_1'>Так</label> <br>
+        <input type='checkbox' id='prescription_0' onclick="change_param('prescription', 0)">
+        <label for='prescription_0'>Ні</label> <br>
+    </div>
+    <script>set_filters("{{ add_info.param_list }}")</script>
 </div>
 <div id='main'>
     <div id='content'>

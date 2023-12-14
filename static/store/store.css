@@ -1,8 +1,8 @@
 #filters {
     position: absolute; 
-    left: 0; 
-    top: 100; 
-    width: 17%;
+    left: 15px; 
+    top: 60px; 
+    width: 16%;
     height: 100%;
     background-color: pink;
 }
@@ -26,3 +26,22 @@
     margin: 5px;
     font-size: 14px;
 }
+
+#search-block, 
+#price-block, 
+#category-block, 
+#form-block, 
+#country-block, 
+#prescription-block {
+    width: 70%;
+    margin: 5px auto;
+}
+
+#search-block {
+    margin-top: 50px;
+}
+
+#price-block input {
+    width: 38%;
+}
+
