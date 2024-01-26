@@ -33,7 +33,13 @@ def store(request):
         'param_list': "category, form, country, prescription",  # name, minp, maxp not included
     }
 
-    return render(request, 'store/store.html', {'medicines': medicine_info, 'add_info': add_info})
+    context = {'medicines': medicine_info, 'add_info': add_info}
+
+    if current_user := request.user if request.user.is_authenticated else None:
+        context['user'] = {'current_username': current_user.username,
+                           'current_user_id': current_user.id}
+
+    return render(request, 'store/store.html', context)
 
 
 def medicine_page(request, id):

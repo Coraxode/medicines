@@ -13,8 +13,17 @@
     <script src="{% static '/store/scripts.js' %}"></script>
 </head>
 <body>
-    <header id="header-store">
-        <a href="{% url 'store' %}" id="medicines-label">Medicines</a>
+    <header class="header-store">
+        <a href="{% url 'store' %}" class="medicines-label">Medicines</a>
+        <div class="user-block">
+            {% if user.current_user_id %}
+                <a class="username" href='/user/{{ user.current_username }}'>{{ user.current_username }}</a>
+                <input class='user-button' type='button' value='Вийти' onclick="window.location.href = '{% url 'account_logout' %}';">
+            {% else %}
+                <input class='user-button' type='button' value='Увійти' onclick="window.location.href = '{% url 'account_login' %}';">
+                <input class='user-button' type='button' value='Реєстрація' onclick="window.location.href = '{% url 'account_signup' %}';">
+            {% endif %}
+        </div>
     </header>
     <main>
         {% block content %}{% endblock %}

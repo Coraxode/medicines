@@ -1,3 +1,5 @@
 __pycache__/
 .env
 venv/
+main/templates/account/
+main/templates/account_save/

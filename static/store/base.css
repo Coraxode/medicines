@@ -7,17 +7,37 @@ body {
     margin: 0px;
 }
 
-#header-store {
+.header-store {
+    display: flex;
     height: 50px;
     background-color: #212529;
 }
 
-#medicines-label {
+.medicines-label {
+    margin: auto 0 auto 18%;
+}
+
+.user-block {
+    margin: auto 18% auto auto;
+}
+
+.username,
+.medicines-label {
     text-decoration: none;
     color: white;
     font-size: 23px;
     font-weight: 550;
+}
+
+.user-button {
+    font-size: 18px;
+    font-weight: 550;
+    color: white;
+    padding: 3px;
     position: relative;
-    top: 7px;
-    left: 18%;
+    bottom: 2px;
+    border: none;
+    border-radius: 6px;
+    background-color: #F96D15;
+    margin-left: 15px;
 }

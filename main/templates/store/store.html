@@ -5,38 +5,38 @@ Medicines
 {% endblock %}
 
 {% block content %}
-<div id='filters'>
-    <div id='search-block'>
+<div class='filters'>
+    <div class='search-block'>
         <input type='text' id='search' placeholder='Пошук' onsubmit='alert1()'>
     </div>
-    <div id='price-block'>
+    <div class='price-block'>
         <p style='margin-bottom: 5px;'>Ціна від:</p>
         <input type='text' id='minp' placeholder='{{ add_info.min_price }}'>
         <p style='display: inline;'>До</p>
         <input type='text' id='maxp' placeholder='{{ add_info.max_price }}'>
     </div>
-    <div id='category-block'>
+    <div class='category-block'>
         <p style='margin-bottom: 5px;'>Категорія:</p>
         {% for category in add_info.categories %}
             <input type='checkbox' id='category_{{ category.0 }}' onclick="change_param('category', {{ category.0 }})">
             <label for='category_{{ category.0 }}'>{{ category.1 }}</label> <br>
         {% endfor %}
     </div>
-    <div id='form-block'>
+    <div class='form-block'>
         <p style='margin-bottom: 5px;'>Форма:</p>
         {% for form in add_info.forms %}
             <input type='checkbox' id='form_{{ form.0 }}' onclick="change_param('form', {{ form.0 }})">
             <label for='form_{{ form.0 }}'>{{ form.1 }}</label> <br>
         {% endfor %}
     </div>
-    <div id='country-block'>
+    <div class='country-block'>
         <p style='margin-bottom: 5px;'>Країна:</p>
         {% for country in add_info.countries %}
             <input type='checkbox' id='country_{{ country.0 }}' onclick="change_param('country', {{ country.0 }})">
             <label for='country_{{ country.0 }}'>{{ country.1 }}</label> <br>
         {% endfor %}
     </div>
-    <div id='prescription-block'>
+    <div class='prescription-block'>
         <p style='margin-bottom: 5px;'>Чи потрібна наявність рецепту:</p>
         <input type='checkbox' id='prescription_1' onclick="change_param('prescription', 1)">
         <label for='prescription_1'>Так</label> <br>
@@ -46,8 +46,8 @@ Medicines
     <script>set_filters("{{ add_info.param_list }}")</script>
     <script>add_search_event()</script>
 </div>
-<div id='main'>
-    <div id='content'>
+<div class='main'>
+    <div class='content'>
         {% for p in medicines %}
             <div class='medicine' onclick="location.href='/medicine/{{ p.id }}/';">
                 <img src="{{ p.photo }}" width="175" height="175"/> <br>
