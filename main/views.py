@@ -1,5 +1,7 @@
 from django.shortcuts import render, redirect
 from .models import Medicine, Categories, Forms, CountryOfOrigin
+from django.contrib.auth.models import User
+# from django.http import HttpResponse
 
 
 def index(request):
@@ -35,11 +37,7 @@ def store(request):
 
     context = {'medicines': medicine_info, 'add_info': add_info}
 
-    if current_user := request.user if request.user.is_authenticated else None:
-        context['user'] = {'current_username': current_user.username,
-                           'current_user_id': current_user.id}
-
-    return render(request, 'store/store.html', context)
+    return render(request, 'store/store.html', check_authenticated(context, request.user))
 
 
 def medicine_page(request, id):
@@ -56,4 +54,17 @@ def medicine_page(request, id):
         'country_of_origin': medicine.country_of_origin.first(),
     }
 
-    return render(request, 'store/medicine.html', {'medicine': medicine_info})
+    return render(request, 'store/medicine.html', check_authenticated({'medicine': medicine_info}, request.user))
+
+
+def user_page(request, username):
+    user = User.objects.get(username=username)
+    context = {'user_about': user}
+    return render(request, 'store/user_page.html', check_authenticated(context, request.user))
+
+
+def check_authenticated(context, user):
+    if user.is_authenticated:
+        context['current_user'] = {'username': user.username}
+
+    return context

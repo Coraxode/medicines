@@ -1,22 +1,22 @@
-#medicine-info {
+.medicine-info {
     margin: 15px auto;
     min-height: 50vh;
     width: 40%;
 }
 
-#medicine-info img {
+.medicine-info img {
     float: left;
     margin-right: 30px;
 }
 
-#medicine-name {
+.medicine-name {
     font-weight: bold;
     font-size: 25px;
     margin-top: 15px;
     margin-bottom: 5px;
 }
 
-#medicine-price {
+.medicine-price {
     font-weight: bold;
     font-size: 30px;
     margin-top: 20px;

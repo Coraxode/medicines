@@ -5,11 +5,11 @@
 {% endblock %}
 
 {% block content %}
-<div id='medicine-info'>
+<div class='medicine-info'>
     <img src="{{ medicine.photo }}" width="400" height="400"/>
     <div id='medicine-text-info'>
-        <p id='medicine-name'>{{ medicine.name }}</p>
-        <p id='medicine-price'>{{ medicine.price }} грн</p>
+        <p class='medicine-name'>{{ medicine.name }}</p>
+        <p class='medicine-price'>{{ medicine.price }} грн</p>
         <p class='other-medicine-info'>Категорія: <span>{{ medicine.category }}</span></p>
         <p class='other-medicine-info'>Форма випуску: <span>{{ medicine.form }}</span></p>
         <p class='other-medicine-info'>Виробник: <span>{{ medicine.manufacturer }}</span></p>
