@@ -25,6 +25,12 @@
     padding: 5px;
     margin: 5px;
     font-size: 14px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.medicine label {
+    white-space: nowrap;
 }
 
 .search-block, 
@@ -47,4 +53,22 @@
 
 .price-block input {
     width: 38%;
+}
+
+.buy-favourites-buttons-block {
+    margin-top: 15px;
+    display: flex;
+}
+
+.add-to-favourites-mp-button,
+.buy-from-mp-button {
+    width: 95%;
+    font-size: 10px;
+    /* background-color: orange; */
+}
+
+.add-to-favourites-mp-form,
+.buy-from-mp-form {
+    width: 50%;
+    text-align: center;
 }

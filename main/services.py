@@ -6,22 +6,27 @@ def check_authenticated(context: dict, user) -> dict:
     """ Checks if a user is authenticated and updates the context accordingly. """
 
     if user.is_authenticated:
-        context['current_user'] = {'username': user.username}
-
+        context['current_user'] = {'username': user.username,
+                                   'favourites': list(UserInfo.objects.get(user=user)
+                                                      .favourites.all().values_list('id', flat=True))}
     return context
 
 
-def get_info_for_filters() -> dict:
+def get_info_for_filters(medicines) -> dict:
     """ Retrieves information for constructing filters on the site. """
 
-    return {
+    filters = {
         'categories': Categories.objects.values_list('id', 'name'),
         'forms': Forms.objects.values_list('id', 'name'),
         'countries': CountryOfOrigin.objects.values_list('id', 'name'),
-        'min_price': Medicine.objects.order_by('price').first().price,
-        'max_price': Medicine.objects.order_by('price').last().price,
         'param_list': "category, form, country, prescription",
         }
+
+    if medicines:
+        filters['min_price'] = medicines.order_by('price').first().price
+        filters['max_price'] = medicines.order_by('price').last().price
+
+    return filters
 
 
 def search_medicines(req=None, search_by_id=False) -> dict:
@@ -52,3 +57,13 @@ def get_info_for_user_page(username) -> dict:
 
     user_info = UserInfo.objects.get_or_create(user=user)
     return {'user_about': user, 'add_info': user_info}
+
+
+def add_to_favourites(username, medicine_id):
+    user = UserInfo.objects.get(user=User.objects.filter(username=username).first())
+    medicine = Medicine.objects.get(id=medicine_id)
+
+    if medicine in user.favourites.all():
+        user.favourites.remove(Medicine.objects.get(id=medicine_id))
+    else:
+        user.favourites.add(Medicine.objects.get(id=medicine_id))

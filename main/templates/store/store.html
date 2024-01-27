@@ -11,9 +11,9 @@ Medicines
     </div>
     <div class='price-block'>
         <p style='margin-bottom: 5px;'>Ціна від:</p>
-        <input type='text' id='minp' placeholder='{{ filters.min_price }}'>
+        <input type='text' id='minp' placeholder='{{ filters.min_price.0 }}'>
         <p style='display: inline;'>До</p>
-        <input type='text' id='maxp' placeholder='{{ filters.max_price }}'>
+        <input type='text' id='maxp' placeholder='{{ filters.max_price.0 }}'>
     </div>
     <div class='category-block'>
         <p style='margin-bottom: 5px;'>Категорія:</p>
@@ -52,7 +52,18 @@ Medicines
             <div class='medicine' onclick="location.href='/medicine/{{ p.id }}/';">
                 <img src="{{ p.photo }}" width="175" height="175"/> <br>
                 <label style='font-weight: 450;'>{{ p.name }}</label> <br><br>
-                <label style='font-size: 17px; font-weight: 600;'>{{ p.price }} грн</label>
+                <label style='font-size: 17px; font-weight: 600; margin-right: auto;'>{{ p.price }} грн</label>
+                <div class="buy-favourites-buttons-block">
+                    <form class="buy-from-mp-form">
+                        <input class="buy-from-mp-button" type="button" onclick="alert('Не готово!'); event.stopPropagation();" value="Придбати">
+                    </form>
+                    <form method="POST" enctype="multipart/form-data" action="/store/" class="add-to-favourites-mp-form">
+                        {% csrf_token %}
+                        <input type="text" name="username" value="{{ current_user.username }}" style="display: none;">
+                        <input type="text" name="medicine_id" value="{{ p.id }}" style="display: none;">
+                        <input id="add-to-favourites-mp-button-{{ p.id }}" class="add-to-favourites-mp-button" type="submit" onclick="event.stopPropagation();" value="До улюблених">
+                    </form>
+                </div>
             </div>
         {% endfor %}
     </div>

@@ -28,6 +28,7 @@
     </header>
     <main>
         {% block content %}{% endblock %}
+        <script>check_is_in_favourites({{ current_user.favourites }})</script>
     </main>
 </body>
 </html>
