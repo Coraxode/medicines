@@ -7,5 +7,14 @@
 {% block content %}
 <div class="user-info">
     Вибране:
+    <div>
+    {% for p in add_info.0.favourites.all %}
+        <div class='medicine' onclick="location.href='/medicine/{{ p.id }}/';">
+            <img src="{{ p.photo }}" width="175" height="175"/> <br>
+            <label style='font-weight: 450;'>{{ p.name }}</label> <br><br>
+            <label style='font-size: 17px; font-weight: 600;'>{{ p.price }} грн</label>
+        </div>
+    {% endfor %}
+    </div>
 </div>
 {% endblock %}

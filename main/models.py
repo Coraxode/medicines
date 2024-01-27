@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 
 class Categories(models.Model):
@@ -43,5 +44,22 @@ class Medicine(models.Model):
     description = models.TextField(help_text="Опис", blank=True)
     quantity = models.IntegerField(help_text="Кількість препарату", default=0, blank=True)
 
+    @classmethod
+    def filter_medicines(cls, search, price_range, category, form, country, prescription):
+        return cls.objects.filter(name__icontains=search,
+                                  price__range=price_range,
+                                  category__in=category,
+                                  form__in=form,
+                                  country_of_origin__in=country,
+                                  is_prescription_required__in=prescription)
+
     def __str__(self):
         return f'{self.name}'
+
+
+class UserInfo(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
+    favourites = models.ManyToManyField(Medicine, help_text='Вибрані товари', blank=True)
+
+    def __str__(self):
+        return f'{self.user} info'
