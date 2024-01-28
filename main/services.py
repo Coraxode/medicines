@@ -59,7 +59,7 @@ def get_info_for_user_page(username) -> dict:
     return {'user_about': user, 'add_info': user_info}
 
 
-def add_to_favourites(username, medicine_id):
+def add_to_favourites(username, medicine_id) -> None:
     user = UserInfo.objects.get(user=User.objects.filter(username=username).first())
     medicine = Medicine.objects.get(id=medicine_id)
 
