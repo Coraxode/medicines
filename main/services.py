@@ -43,6 +43,7 @@ def search_medicines(req=None, search_by_id=False) -> dict:
                             form=req.GET.getlist('form', [str(i) for i in range(20)]),
                             country=req.GET.getlist('country', [str(i) for i in range(20)]),
                             prescription=req.GET.getlist('prescription', [0, 1]),
+                            order_by=req.GET.get('order_by', 'id')
                             )
             }
 

@@ -47,6 +47,14 @@ Medicines
     <script>add_search_event()</script>
 </div>
 <div class='main'>
+    <div class="dropdown">
+        <button class="dropbtn">Сортування</button>
+        <div class="dropdown-content">
+          <a onclick="change_param('order_by', 'id',)">Звичайне</a>
+          <a onclick="change_param('order_by', 'price', 'price')">Від дешевих до дорогих</a>
+          <a onclick="change_param('order_by', '-price', '-price')">від дорогих до дешевих</a>
+        </div>
+      </div>
     <div class='content'>
         {% for p in medicines %}
             <div class='medicine' onclick="location.href='/medicine/{{ p.id }}/';">
@@ -59,8 +67,8 @@ Medicines
                     </form>
                     <form method="POST" enctype="multipart/form-data" action="/store/" class="add-to-favourites-mp-form">
                         {% csrf_token %}
-                        <input type="text" name="username" value="{{ current_user.username }}" style="display: none;">
-                        <input type="text" name="medicine_id" value="{{ p.id }}" style="display: none;">
+                        <input type="hidden" name="username" value="{{ current_user.username }}">
+                        <input type="hidden" name="medicine_id" value="{{ p.id }}">
                         <input id="add-to-favourites-mp-button-{{ p.id }}" class="add-to-favourites-mp-button" type="submit" onclick="event.stopPropagation();" value="До улюблених">
                     </form>
                 </div>

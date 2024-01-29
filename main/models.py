@@ -45,13 +45,14 @@ class Medicine(models.Model):
     quantity = models.IntegerField(help_text="Кількість препарату", default=0, blank=True)
 
     @classmethod
-    def filter_medicines(cls, search, price_range, category, form, country, prescription):
+    def filter_medicines(cls, search, price_range, category, form, country, prescription, order_by):
         return cls.objects.filter(name__icontains=search,
                                   price__range=price_range,
                                   category__in=category,
                                   form__in=form,
                                   country_of_origin__in=country,
-                                  is_prescription_required__in=prescription)
+                                  is_prescription_required__in=prescription
+                                  ).order_by(order_by)
 
     def __str__(self):
         return f'{self.name}'
