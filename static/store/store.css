@@ -110,3 +110,10 @@
 .dropdown:hover .dropdown-content {display: block;}
 
 .dropdown:hover .dropbtn {background-color: #3e8e41;}
+
+.clear-filters-button {
+    display: inline-block;
+    margin-left: 20px;
+}
+
+.clear-filters-button:hover .dropbtn {background-color: #3e8e41;}

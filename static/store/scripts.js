@@ -53,7 +53,9 @@ function add_search_event() {
 function check_is_in_favourites(favourites_list) {
     for (let i = 0; i < favourites_list.length; i++) {
         btn = document.getElementById("add-to-favourites-mp-button-" + favourites_list[i]);
-        btn.value = "В улюблених";
-        btn.style.backgroundColor = "orange";
+        if (btn) {
+            btn.value = "В улюблених";
+            btn.style.backgroundColor = "orange";
+        }
     }
 }

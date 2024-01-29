@@ -11,7 +11,7 @@ def index(request):
 def store(request):
     if request.method == 'POST':
         add_to_favourites(request.POST['username'], request.POST['medicine_id'])
-        return redirect(request.path)
+        return redirect(request.POST['url'])
 
     medicines = search_medicines(request)
     medicines['filters'] = get_info_for_filters(medicines['medicines'])
@@ -30,10 +30,6 @@ def medicine_page(request, id):
 
 
 def user_page(request, username):
-    if request.method == 'POST':
-        add_to_favourites(request.POST['username'], request.POST['medicine_id'])
-        return redirect(request.path)
-
     user_info = get_info_for_user_page(username)
     if not user_info:
         return JsonResponse({'message': 'Not a valid username'}, status=404)
