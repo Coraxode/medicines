@@ -17,13 +17,13 @@
     <header class="header-store">
         <a href="{% url 'store' %}" class="medicines-label">Medicines</a>
         <div class="user-block">
-            {% if current_user.username %}
+            {% comment %} {% if current_user.username %}
                 <a class="username" href='/user/{{ current_user.username }}'>{{ current_user.username }}</a>
                 <input class='user-button' type='button' value='Вийти' onclick="window.location.href = '{% url 'account_logout' %}';">
             {% else %}
                 <input class='user-button' type='button' value='Увійти' onclick="window.location.href = '{% url 'account_login' %}';">
                 <input class='user-button' type='button' value='Реєстрація' onclick="window.location.href = '{% url 'account_signup' %}';">
-            {% endif %}
+            {% endif %} {% endcomment %}
         </div>
     </header>
     <main>

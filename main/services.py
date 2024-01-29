@@ -7,7 +7,7 @@ def check_authenticated(context: dict, user) -> dict:
 
     if user.is_authenticated:
         context['current_user'] = {'username': user.username,
-                                   'favourites': list(UserInfo.objects.get(user=user)
+                                   'favourites': list(UserInfo.objects.get_or_create(user=user)[0]
                                                       .favourites.all().values_list('id', flat=True))}
     return context
 
