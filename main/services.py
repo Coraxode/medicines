@@ -1,25 +1,12 @@
-from .models import Medicine, Categories, Forms, CountryOfOrigin, UserInfo
-from django.contrib.auth.models import User
-
-
-def prepare_context(context: dict, user, title) -> dict:
-    """ Prepares the context dictionary for rendering a web page. """
-
-    context['title'] = title
-
-    if user.is_authenticated:
-        context['current_user'] = {'username': user.username,
-                                   'favourites': list(UserInfo.objects.get_or_create(user=user)[0]
-                                                      .favourites.all().values_list('id', flat=True))}
-    return context
+from .models import Medicine, Category, Form, CountryOfOrigin
 
 
 def get_info_for_filters(medicines) -> dict:
     """ Retrieves information for constructing filters on the site. """
 
     filters = {
-        'categories': Categories.objects.values_list('id', 'name'),
-        'forms': Forms.objects.values_list('id', 'name'),
+        'categories': Category.objects.values_list('id', 'name'),
+        'forms': Form.objects.values_list('id', 'name'),
         'countries': CountryOfOrigin.objects.values_list('id', 'name'),
         'param_list': "category, form, country, prescription",
         }
@@ -48,25 +35,3 @@ def search_medicines(req=None, search_by_id=False) -> dict:
                             order_by=req.GET.get('order_by', 'id')
                             )
             }
-
-
-def get_info_for_user_page(username) -> dict:
-    """ Retrieves information for displaying a user page. """
-
-    user = User.objects.filter(username=username).first()
-
-    if not user:
-        return False
-
-    user_info = UserInfo.objects.get_or_create(user=user)
-    return {'user_about': user, 'add_info': user_info}
-
-
-def add_to_favourites(username, medicine_id) -> None:
-    user = UserInfo.objects.get(user=User.objects.filter(username=username).first())
-    medicine = Medicine.objects.get(id=medicine_id)
-
-    if medicine in user.favourites.all():
-        user.favourites.remove(Medicine.objects.get(id=medicine_id))
-    else:
-        user.favourites.add(Medicine.objects.get(id=medicine_id))

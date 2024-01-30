@@ -1,181 +1,181 @@
 [
     {
-        "model": "main.categories",
+        "model": "main.category",
         "pk": 1,
         "fields": {
             "name": "Від болю в горлі"
         }
     },
     {
-        "model": "main.categories",
+        "model": "main.category",
         "pk": 2,
         "fields": {
             "name": "Водорості"
         }
     },
     {
-        "model": "main.categories",
+        "model": "main.category",
         "pk": 3,
         "fields": {
             "name": "Від головного болю"
         }
     },
     {
-        "model": "main.categories",
+        "model": "main.category",
         "pk": 4,
         "fields": {
             "name": "Протидіабетичні"
         }
     },
     {
-        "model": "main.categories",
+        "model": "main.category",
         "pk": 5,
         "fields": {
             "name": "Комплекс амінокислот"
         }
     },
     {
-        "model": "main.categories",
+        "model": "main.category",
         "pk": 6,
         "fields": {
             "name": "Таурин"
         }
     },
     {
-        "model": "main.categories",
+        "model": "main.category",
         "pk": 7,
         "fields": {
             "name": "Від корости"
         }
     },
     {
-        "model": "main.categories",
+        "model": "main.category",
         "pk": 8,
         "fields": {
             "name": "Мінеральна вода"
         }
     },
     {
-        "model": "main.categories",
+        "model": "main.category",
         "pk": 9,
         "fields": {
             "name": "Спазмолітики"
         }
     },
     {
-        "model": "main.categories",
+        "model": "main.category",
         "pk": 10,
         "fields": {
             "name": "Йодовмісні контрастні засоби"
         }
     },
     {
-        "model": "main.forms",
+        "model": "main.form",
         "pk": 1,
         "fields": {
             "name": "Таблетки"
         }
     },
     {
-        "model": "main.forms",
+        "model": "main.form",
         "pk": 2,
         "fields": {
             "name": "Розчин"
         }
     },
     {
-        "model": "main.forms",
+        "model": "main.form",
         "pk": 3,
         "fields": {
             "name": "Капсули"
         }
     },
     {
-        "model": "main.forms",
+        "model": "main.form",
         "pk": 4,
         "fields": {
-            "name": "емульсія"
+            "name": "Емульсія"
         }
     },
     {
-        "model": "main.forms",
+        "model": "main.form",
         "pk": 5,
         "fields": {
             "name": "Пластикова пляшка"
         }
     },
     {
-        "model": "main.manufacturers",
+        "model": "main.manufacturer",
         "pk": 1,
         "fields": {
             "name": "ПрАТ «Фармацевтична фірма «Дарниця»."
         }
     },
     {
-        "model": "main.manufacturers",
+        "model": "main.manufacturer",
         "pk": 2,
         "fields": {
-            "name": "ТОВ \"Красота та Здоров'я\""
+            "name": "ТОВ  \"Красота та Здоров'я\""
         }
     },
     {
-        "model": "main.manufacturers",
+        "model": "main.manufacturer",
         "pk": 3,
         "fields": {
             "name": "Берінгер Інгельхайм Фарма ГмбХ і Ко.КГ"
         }
     },
     {
-        "model": "main.manufacturers",
+        "model": "main.manufacturer",
         "pk": 4,
         "fields": {
             "name": "АстраЗенека ЮК Лімітед"
         }
     },
     {
-        "model": "main.manufacturers",
+        "model": "main.manufacturer",
         "pk": 5,
         "fields": {
             "name": "АТ «КИЇВСЬКИЙ ВІТАМІННИЙ ЗАВОД»."
         }
     },
     {
-        "model": "main.manufacturers",
+        "model": "main.manufacturer",
         "pk": 6,
         "fields": {
             "name": "МКМ Найнекс, ТОВ"
         }
     },
     {
-        "model": "main.manufacturers",
+        "model": "main.manufacturer",
         "pk": 7,
         "fields": {
             "name": "Еліт-Фарм, ТОВ"
         }
     },
     {
-        "model": "main.manufacturers",
+        "model": "main.manufacturer",
         "pk": 8,
         "fields": {
             "name": "ТОВ «ДКП «Фармацевтична фабрика»."
         }
     },
     {
-        "model": "main.manufacturers",
+        "model": "main.manufacturer",
         "pk": 9,
         "fields": {
             "name": "Юрія-Фарм, ТОВ"
         }
     },
     {
-        "model": "main.manufacturers",
+        "model": "main.manufacturer",
         "pk": 10,
         "fields": {
             "name": "Опелла Хелскеа Хангері Кфт."
         }
     },
     {
-        "model": "main.manufacturers",
+        "model": "main.manufacturer",
         "pk": 11,
         "fields": {
             "name": "АТ «Фармак»."
@@ -209,23 +209,15 @@
             "name": "Септефрил-Дарниця",
             "price": 67.73,
             "photo": "https://root.tblcdn.com/img/goods/fa37f528-35bd-433d-bc75-17c6a9a2548c/1/img_0.jpg?v=AAAAAAmYtFE",
+            "category": 1,
+            "form": 1,
+            "manufacturer": 1,
+            "country_of_origin": 1,
             "is_prescription_required": false,
             "date_of_manufacture": "2023-05-04",
             "service_life": 60,
             "description": "Опис препарату Септефрил-Дарниця",
-            "quantity": 2561,
-            "category": [
-                1
-            ],
-            "form": [
-                1
-            ],
-            "manufacturer": [
-                1
-            ],
-            "country_of_origin": [
-                1
-            ]
+            "quantity": 2561
         }
     },
     {
@@ -235,23 +227,15 @@
             "name": "Спіруліна",
             "price": 71.2,
             "photo": "https://root.tblcdn.com/img/goods/5fa97417-0d75-47eb-9399-51201cf106e3/1/img_0.jpg?v=AAAAAAmzR1Y",
+            "category": 2,
+            "form": 1,
+            "manufacturer": 2,
+            "country_of_origin": 1,
             "is_prescription_required": false,
             "date_of_manufacture": "2023-12-10",
             "service_life": 36,
             "description": "Опис препарату Спіруліна",
-            "quantity": 1256,
-            "category": [
-                2
-            ],
-            "form": [
-                1
-            ],
-            "manufacturer": [
-                2
-            ],
-            "country_of_origin": [
-                1
-            ]
+            "quantity": 1256
         }
     },
     {
@@ -261,23 +245,15 @@
             "name": "Цитрамон-Дарниця",
             "price": 33.11,
             "photo": "https://root.tblcdn.com/img/goods/af45c99d-56c8-41d0-a9de-165885bad426/1/img_0.jpg?v=AAAAAAnhZ4I",
+            "category": 3,
+            "form": 1,
+            "manufacturer": 1,
+            "country_of_origin": 1,
             "is_prescription_required": false,
             "date_of_manufacture": "2023-12-12",
             "service_life": 36,
             "description": "Опис препарату Цитрамон-Дарниця",
-            "quantity": 980,
-            "category": [
-                3
-            ],
-            "form": [
-                1
-            ],
-            "manufacturer": [
-                1
-            ],
-            "country_of_origin": [
-                1
-            ]
+            "quantity": 980
         }
     },
     {
@@ -287,23 +263,15 @@
             "name": "Джардінс",
             "price": 780.31,
             "photo": "https://root.tblcdn.com/img/goods/bc731782-d19d-4394-a786-1d7b6b67a9ef/1/img_0.jpg?v=AAAAAAhZHao",
+            "category": 4,
+            "form": 1,
+            "manufacturer": 3,
+            "country_of_origin": 2,
             "is_prescription_required": true,
             "date_of_manufacture": "2024-01-27",
             "service_life": 36,
             "description": "Опис препарату Джардінс",
-            "quantity": 218,
-            "category": [
-                4
-            ],
-            "form": [
-                1
-            ],
-            "manufacturer": [
-                3
-            ],
-            "country_of_origin": [
-                2
-            ]
+            "quantity": 218
         }
     },
     {
@@ -313,23 +281,15 @@
             "name": "Форксіга",
             "price": 1250.31,
             "photo": "https://root.tblcdn.com/img/goods/e10375b6-a6ce-48bd-b257-439db5282f2e/1/img_0.jpg?v=AAAAAAnlQk4",
+            "category": 4,
+            "form": 1,
+            "manufacturer": 4,
+            "country_of_origin": 3,
             "is_prescription_required": true,
             "date_of_manufacture": "2024-01-27",
             "service_life": 48,
             "description": "Опис препарату Форксіга",
-            "quantity": 151,
-            "category": [
-                4
-            ],
-            "form": [
-                1
-            ],
-            "manufacturer": [
-                4
-            ],
-            "country_of_origin": [
-                3
-            ]
+            "quantity": 151
         }
     },
     {
@@ -339,23 +299,15 @@
             "name": "Метафора",
             "price": 61.15,
             "photo": "https://root.tblcdn.com/img/goods/1b621c8e-b05b-48e7-ad1e-44d0a5cbf2f5/1/img_0.jpg?v=AAAAAAn3ZLI",
+            "category": 4,
+            "form": 1,
+            "manufacturer": 5,
+            "country_of_origin": 1,
             "is_prescription_required": false,
             "date_of_manufacture": "2024-01-27",
             "service_life": 24,
             "description": "Опис препарату Метафора",
-            "quantity": 1632,
-            "category": [
-                4
-            ],
-            "form": [
-                1
-            ],
-            "manufacturer": [
-                5
-            ],
-            "country_of_origin": [
-                1
-            ]
+            "quantity": 1632
         }
     },
     {
@@ -365,23 +317,15 @@
             "name": "Армікор",
             "price": 395.14,
             "photo": "https://root.tblcdn.com/img/goods/5e9534cf-2fee-11eb-bac2-0050569aacb6/1/img_0.jpg?v=AAAAAAoPErM",
+            "category": 5,
+            "form": 2,
+            "manufacturer": 6,
+            "country_of_origin": 1,
             "is_prescription_required": false,
             "date_of_manufacture": "2024-01-27",
             "service_life": 36,
             "description": "Опис препарату Армікор",
-            "quantity": 564,
-            "category": [
-                5
-            ],
-            "form": [
-                2
-            ],
-            "manufacturer": [
-                6
-            ],
-            "country_of_origin": [
-                1
-            ]
+            "quantity": 564
         }
     },
     {
@@ -391,23 +335,15 @@
             "name": "Таурин біоактив",
             "price": 73.78,
             "photo": "https://root.tblcdn.com/img/goods/2dbd2f64-d25c-11ea-babd-0050569aacb6/1/img_0.jpg?v=AAAAAAqmnA",
+            "category": 6,
+            "form": 3,
+            "manufacturer": 7,
+            "country_of_origin": 1,
             "is_prescription_required": false,
             "date_of_manufacture": "2024-01-27",
             "service_life": 24,
             "description": "Опис препарату Таурин біоактив",
-            "quantity": 789,
-            "category": [
-                6
-            ],
-            "form": [
-                3
-            ],
-            "manufacturer": [
-                7
-            ],
-            "country_of_origin": [
-                1
-            ]
+            "quantity": 789
         }
     },
     {
@@ -417,23 +353,15 @@
             "name": "Бензилбензоату емульсія",
             "price": 31.56,
             "photo": "https://root.tblcdn.com/img/goods/a0d5181b-ac67-4202-9118-5d7c195b90b2/1/img_0.jpg?v=AAAAAAhZJcg",
+            "category": 7,
+            "form": 4,
+            "manufacturer": 8,
+            "country_of_origin": 1,
             "is_prescription_required": false,
             "date_of_manufacture": "2024-01-27",
             "service_life": 24,
             "description": "Опис препарату Бензилбензоату емульсія",
-            "quantity": 780,
-            "category": [
-                7
-            ],
-            "form": [
-                4
-            ],
-            "manufacturer": [
-                8
-            ],
-            "country_of_origin": [
-                1
-            ]
+            "quantity": 780
         }
     },
     {
@@ -443,23 +371,15 @@
             "name": "Вода питна РЕО",
             "price": 66.12,
             "photo": "https://root.tblcdn.com/img/goods/9bf4a4b7-6449-4163-831b-d8e71c8212e8/1/img_0.jpg?v=AAAAAAmluKY",
+            "category": 8,
+            "form": 5,
+            "manufacturer": 9,
+            "country_of_origin": 1,
             "is_prescription_required": false,
             "date_of_manufacture": "2024-01-27",
             "service_life": 12,
             "description": "Опис Вода питна РЕО",
-            "quantity": 7166,
-            "category": [
-                8
-            ],
-            "form": [
-                5
-            ],
-            "manufacturer": [
-                9
-            ],
-            "country_of_origin": [
-                1
-            ]
+            "quantity": 7166
         }
     },
     {
@@ -469,23 +389,15 @@
             "name": "Но-шпа",
             "price": 111.67,
             "photo": "https://root.tblcdn.com/img/goods/4d006275-fd7d-4b8b-95a6-a89cef03483a/1/img_0.jpg?v=AAAAAAnhZ4c",
+            "category": 9,
+            "form": 1,
+            "manufacturer": 10,
+            "country_of_origin": 2,
             "is_prescription_required": false,
             "date_of_manufacture": "2024-01-27",
             "service_life": 36,
             "description": "Опис препарату Но-шпа",
-            "quantity": 906,
-            "category": [
-                9
-            ],
-            "form": [
-                1
-            ],
-            "manufacturer": [
-                10
-            ],
-            "country_of_origin": [
-                2
-            ]
+            "quantity": 906
         }
     },
     {
@@ -495,36 +407,15 @@
             "name": "Томогексол",
             "price": 795.63,
             "photo": "https://root.tblcdn.com/img/goods/ec4fdff4-289c-4536-9d53-7767b24b5161/1/img_0.jpg?v=AAAAAAoC3pU",
+            "category": 10,
+            "form": 2,
+            "manufacturer": 11,
+            "country_of_origin": 1,
             "is_prescription_required": true,
             "date_of_manufacture": "2024-01-27",
             "service_life": 24,
             "description": "Опис препарату Томогексол",
-            "quantity": 561,
-            "category": [
-                10
-            ],
-            "form": [
-                2
-            ],
-            "manufacturer": [
-                11
-            ],
-            "country_of_origin": [
-                1
-            ]
-        }
-    },
-    {
-        "model": "main.userinfo",
-        "pk": 1,
-        "fields": {
-            "favourites": [
-                2,
-                3,
-                4,
-                10,
-                11
-            ]
+            "quantity": 561
         }
     }
 ]

@@ -1,13 +1,13 @@
 from django.test import TestCase
 from django.contrib.auth.models import User
-from ..models import Categories, Forms, Manufacturers, CountryOfOrigin, Medicine, UserInfo
+from ..models import Category, Form, Manufacturer, CountryOfOrigin, Medicine
 
 
 class MedicineModelTest(TestCase):
     def setUp(self):
-        category = Categories.objects.create(name='Протизастудні')
-        form = Forms.objects.create(name='Таблетки')
-        manufacturer = Manufacturers.objects.create(name='Manufacturer1')
+        category = Category.objects.create(name='Протизастудні')
+        form = Form.objects.create(name='Таблетки')
+        manufacturer = Manufacturer.objects.create(name='Manufacturer1')
         country = CountryOfOrigin.objects.create(name='Country1')
 
         self.medicine = Medicine.objects.create(
@@ -45,7 +45,6 @@ class UserInfoModelTest(TestCase):
         # Попередня налаштування для тестів
         user = User.objects.create(username='testuser')
         medicine = Medicine.objects.create(name='TestMedicine')
-        self.user_info = UserInfo.objects.create(user=user)
 
         self.user_info.favourites.add(medicine)
 

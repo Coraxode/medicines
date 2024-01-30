@@ -1,7 +1,6 @@
 from django.http import JsonResponse
 from django.shortcuts import render
-
-from main.services import get_info_for_user_page, prepare_context
+from .services import get_user_by_username
 
 
 def login(request):
@@ -17,10 +16,13 @@ def signup(request):
 
 
 def profile(request, username):
-    user_info = get_info_for_user_page(username)
-    if not user_info:
+    user = get_user_by_username(username)
+    if not user:
         return JsonResponse({'message': 'Not a valid username'}, status=404)
-    context = prepare_context(user_info, request.user, username)
+    context = {
+        'user_info': user,
+        'title': user.username,
+    }
 
     return render(request, 'users/profile.html', context)
 

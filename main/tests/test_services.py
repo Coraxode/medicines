@@ -1,14 +1,14 @@
 from django.test import TestCase, RequestFactory
 from django.contrib.auth.models import User
-from ..models import Medicine, Categories, Forms, CountryOfOrigin, UserInfo
-from ..services import check_authenticated, get_info_for_filters, search_medicines, get_info_for_user_page, add_to_favourites
+from ..models import Medicine, Category, Form, CountryOfOrigin
+from ..services import get_info_for_filters, search_medicines
 
 
 class YourAppTestCase(TestCase):
     def setUp(self):
         # Set up necessary objects for testing
         self.user = User.objects.create(username='testuser', password='testpassword')
-        self.category = Categories.objects.create(name='TestCategory')
+        self.category = Category.objects.create(name='TestCategory')
         self.form = Forms.objects.create(name='TestForm')
         self.country = CountryOfOrigin.objects.create(name='TestCountry')
         self.medicine = Medicine.objects.create(

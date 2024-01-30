@@ -1,10 +1,9 @@
 from django.contrib import admin
-from .models import Categories, Forms, Manufacturers, CountryOfOrigin, Medicine, UserInfo
+from .models import Category, Form, Manufacturer, CountryOfOrigin, Medicine
 
 
-admin.site.register(Categories)
-admin.site.register(Forms)
-admin.site.register(Manufacturers)
+admin.site.register(Category)
+admin.site.register(Form)
+admin.site.register(Manufacturer)
 admin.site.register(CountryOfOrigin)
 admin.site.register(Medicine)
-admin.site.register(UserInfo)
