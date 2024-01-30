@@ -3,13 +3,13 @@
 {% block content %}
 <div class='medicine-info'>
     <img src="{{ medicine.photo }}" width="400" height="400"/>
-    <div id='medicine-text-info'>
+    <div class='medicine-text-info'>
         <p class='medicine-name'>{{ medicine.name }}</p>
         <p class='medicine-price'>{{ medicine.price }} грн</p>
-        <p class='other-medicine-info'>Категорія: <span>{{ medicine.category.all.0 }}</span></p>
-        <p class='other-medicine-info'>Форма випуску: <span>{{ medicine.form.all.0 }}</span></p>
-        <p class='other-medicine-info'>Виробник: <span>{{ medicine.manufacturer.all.0 }}</span></p>
-        <p class='other-medicine-info'>Країна: <span>{{ medicine.country_of_origin.all.0 }}</span></p>
+        <p class='other-medicine-info'>Категорія: <span>{{ medicine.category }}</span></p>
+        <p class='other-medicine-info'>Форма випуску: <span>{{ medicine.form }}</span></p>
+        <p class='other-medicine-info'>Виробник: <span>{{ medicine.manufacturer }}</span></p>
+        <p class='other-medicine-info'>Країна: <span>{{ medicine.country_of_origin }}</span></p>
     </div>
 </div>
 {% endblock %}

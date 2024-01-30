@@ -7,14 +7,15 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>{{ title }}</title>
     {% load static %}
-    <link rel="stylesheet" href="{% static '/store/base.css' %}">
+    <link rel="stylesheet" href="{% static '/base.css' %}">
     <link rel="stylesheet" href="{% static '/store/store.css' %}">
     <link rel="stylesheet" href="{% static '/store/medicine.css' %}">
-    <script src="{% static '/store/scripts.js' %}"></script>
+    <link rel="stylesheet" href="{% static '/users/profile.css' %}">
+    <script src="{% static '/scripts.js' %}"></script>
 </head>
 <body>
     <header class="header-store">
-        <a href="{% url 'store' %}" class="medicines-label">Medicines</a>
+        <a href="{% url 'store:store' %}" class="medicines-label">Medicines</a>
         <div class="user-block">
             {% comment %} {% if current_user.username %}
                 <a class="username" href='/user/{{ current_user.username }}'>{{ current_user.username }}</a>
@@ -27,7 +28,7 @@
     </header>
     <main>
         {% block content %}{% endblock %}
-        <script>check_is_in_favourites({{ current_user.favourites }})</script>
+        <script>check_is_in_favourites({{ user.get_fav_list }})</script>
     </main>
 </body>
 </html>
