@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static '/users/signup.css' %}">
+
+<div class="container">
+    <div class="registration form">
+      <header>Реєстрація</header>
+      <form action="#">
+        <input type="text" placeholder="Введіть email">
+        <input type="password" placeholder="Створіть пароль">
+        <input type="password" placeholder="Підтвердіть пароль">
+        <input type="button" class="button" value="Реєстрація">
+      </form>
+      <div class="signup">
+        <span class="signup">Вже маєте аккаунт?
+         <a href={% url 'user:login' %}>Увійти</a>
+        </span>
+      </div>
+    </div>
+  </div>
+{% endblock %}

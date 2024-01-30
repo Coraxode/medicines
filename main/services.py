@@ -2,8 +2,10 @@ from .models import Medicine, Categories, Forms, CountryOfOrigin, UserInfo
 from django.contrib.auth.models import User
 
 
-def check_authenticated(context: dict, user) -> dict:
-    """ Checks if a user is authenticated and updates the context accordingly. """
+def prepare_context(context: dict, user, title) -> dict:
+    """ Prepares the context dictionary for rendering a web page. """
+
+    context['title'] = title
 
     if user.is_authenticated:
         context['current_user'] = {'username': user.username,

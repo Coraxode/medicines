@@ -5,12 +5,11 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>{% block title %}{% endblock %}</title>
+    <title>{{ title }}</title>
     {% load static %}
     <link rel="stylesheet" href="{% static '/store/base.css' %}">
     <link rel="stylesheet" href="{% static '/store/store.css' %}">
     <link rel="stylesheet" href="{% static '/store/medicine.css' %}">
-    <link rel="stylesheet" href="{% static '/store/user_page.css' %}">
     <script src="{% static '/store/scripts.js' %}"></script>
 </head>
 <body>

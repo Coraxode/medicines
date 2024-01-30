@@ -1,9 +1,5 @@
 {% extends 'base.html' %}
 
-{% block title %}
-Medicines
-{% endblock %}
-
 {% block content %}
 <div class='filters'>
     <div class='search-block'>
@@ -50,9 +46,9 @@ Medicines
     <div class="dropdown">
         <button class="dropbtn">Сортування</button>
         <div class="dropdown-content">
-            <a onclick="change_param('order_by', 'id',)">Звичайне</a>
-            <a onclick="change_param('order_by', 'price', 'price')">Від дешевих до дорогих</a>
-            <a onclick="change_param('order_by', '-price', '-price')">від дорогих до дешевих</a>
+            <a onclick="change_param('order_by', 'id')">Звичайне</a>
+            <a onclick="change_param('order_by', 'price')">Від дешевих до дорогих</a>
+            <a onclick="change_param('order_by', '-price')">від дорогих до дешевих</a>
         </div>
     </div>
     <div class='clear-filters-button'>

@@ -3,11 +3,18 @@ function change_param(param, cat_id, change_name_or_price=null) {
     const paramValues = url.searchParams.getAll(param);
     const catIdString = cat_id.toString();
 
+    if (param == 'order_by') {
+        url.searchParams.delete(param);
+        url.searchParams.set(param, cat_id);
+
+        return window.location.href = url.href;
+    }
+
     if (change_name_or_price !== null) {
         if (change_name_or_price == '') {
             url.searchParams.delete(param);
         } else {
-            url.searchParams.set(param, change_name_or_price)
+            url.searchParams.set(param, change_name_or_price);
         }
         
         return window.location.href = url.href;
