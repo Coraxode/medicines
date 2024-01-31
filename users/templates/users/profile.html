@@ -5,23 +5,25 @@
 <div class="user-info">
     Вибране:
     <div>
-    {% for p in user.favourites.all %}
+    {% for p in user_info.favourites.all %}
         <div class='medicine' onclick="location.href='{% url 'store:medicine_page' id=p.id %}';">
             <img src="{{ p.photo }}" width="175" height="175"/> <br>
             <label style='font-weight: 450;'>{{ p.name }}</label> <br><br>
             <label style='font-size: 17px; font-weight: 600;'>{{ p.price }} грн</label>
-            <div class="buy-favourites-buttons-block">
-                <form class="buy-from-mp-form">
-                    <input class="buy-from-mp-button" type="button" onclick="alert('Не готово!'); event.stopPropagation();" value="Придбати">
-                </form>
-                <form method="POST" enctype="multipart/form-data" action="/store/" class="add-to-favourites-mp-form">
-                    {% csrf_token %}
-                    <input type="hidden" name="username" value="{{ user.username }}">
-                    <input type="hidden" name="medicine_id" value="{{ p.id }}">
-                    <input type="hidden" name="url" value="{{ request.build_absolute_uri }}">
-                    <input id="add-to-favourites-mp-button-{{ p.id }}" class="add-to-favourites-mp-button" type="submit" onclick="event.stopPropagation();" value="До улюблених">
-                </form>
-            </div>
+            {% if user.is_authenticated %}
+                <div class="buy-favourites-buttons-block">
+                    <form class="buy-from-mp-form">
+                        <input class="buy-from-mp-button" type="button" onclick="alert('Не готово!'); event.stopPropagation();" value="Придбати">
+                    </form>
+                    <form action="/store/" class="add-to-favourites-mp-form">
+                        <input type="hidden" name="username" value="{{ user.username }}">
+                        <input type="hidden" name="medicine_id" value="{{ p.id }}">
+                        <input type="hidden" name="url" value="{{ request.build_absolute_uri }}">
+                        <input type="hidden" name="add_to_favourites" value=True>
+                        <input id="add-to-favourites-mp-button-{{ p.id }}" class="add-to-favourites-mp-button" type="submit" onclick="event.stopPropagation();" value="До улюблених">
+                    </form>
+                </div>
+            {% endif %}
         </div>
     {% endfor %}
     </div>

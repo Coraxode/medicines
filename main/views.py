@@ -5,13 +5,13 @@ from users.services import add_to_favourites
 
 
 def index(request):
-    return redirect('store')
+    return redirect('store:store')
 
 
 def store(request):
-    if request.method == 'POST':
-        add_to_favourites(request.POST['username'], request.POST['medicine_id'])
-        return redirect(request.POST['url'])
+    if request.GET.get('add_to_favourites'):
+        add_to_favourites(request.GET.get('username'), request.GET.get('medicine_id'))
+        return redirect(request.GET.get('url'))
 
     medicines = search_medicines(request)
     medicines['filters'] = get_info_for_filters(medicines['medicines'])

@@ -1,10 +1,27 @@
-from django.http import JsonResponse
+from django.http import HttpResponseRedirect, JsonResponse
 from django.shortcuts import render
+from django.contrib import auth
+from django.urls import reverse
+from users.forms import UserLoginForm
 from .services import get_user_by_username
 
 
 def login(request):
-    context = {'title': 'Авторизація'}
+    if request.method == 'POST':
+        form = UserLoginForm(data=request.POST)
+        if form.is_valid():
+            username = request.POST['username']
+            password = request.POST['password']
+            user = auth.authenticate(username=username, password=password)
+            if user:
+                auth.login(request, user)
+                return HttpResponseRedirect(reverse('store:store'))
+    else:
+        form = UserLoginForm()
+
+    context = {'title': 'Авторизація',
+               'form': form,
+               }
 
     return render(request, 'users/login.html', context)
 
