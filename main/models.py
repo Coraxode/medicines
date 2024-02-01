@@ -52,7 +52,7 @@ class CountryOfOrigin(models.Model):
 class Medicine(models.Model):
     name = models.CharField(max_length=100, help_text="Назва препарату")
     price = models.FloatField(help_text="Ціна", default=0, blank=True)
-    photo = models.TextField(help_text="Фото препарату", default='', blank=True)
+    photo = models.ImageField(upload_to='medicines_photos', help_text="Фото препарату", default='', blank=True)
     category = models.ForeignKey(Category, on_delete=models.DO_NOTHING, help_text="Категорія препарату (протизастудні, знеболюючі і т.д.)", blank=True, null=True)
     form = models.ForeignKey(Form, on_delete=models.DO_NOTHING, help_text="Форма випуску препарату (сироп, таблетки і т.д.)", blank=True, null=True)
     manufacturer = models.ForeignKey(Manufacturer, on_delete=models.DO_NOTHING, help_text="Виробник препарату", blank=True, null=True)

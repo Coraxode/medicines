@@ -2,7 +2,7 @@
 
 {% block content %}
 <div class='medicine-info'>
-    <img src="{{ medicine.photo }}" width="400" height="400"/>
+    <img src="{% if 'https%3A/' in medicine.photo.url %}{{ medicine.photo }}{% else %}{{ medicine.photo.url }}{% endif %}" width="400" height="400"/>
     <div class='medicine-text-info'>
         <p class='medicine-name'>{{ medicine.name }}</p>
         <p class='medicine-price'>{{ medicine.price }} грн</p>
