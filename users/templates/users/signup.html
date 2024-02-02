@@ -7,11 +7,15 @@
 <div class="container">
     <div class="registration form">
         <header>Реєстрація</header>
-        <form action="#">
-            <input type="text" placeholder="Введіть email">
-            <input type="password" placeholder="Створіть пароль">
-            <input type="password" placeholder="Підтвердіть пароль">
-            <input type="button" class="button" value="Реєстрація">
+        <form action="{% url 'user:signup' %}" method="POST">
+            {% csrf_token %}
+            <input type="text" placeholder="Введіть логін" name="username" value="{% if form.username.value %}{{ form.username.value }}{% endif %}" required>
+            {% if form.username.errors %}{{ form.username.errors }}{% endif %}
+            <input type="password" placeholder="Створіть пароль" name="password1" required>
+            {% if form.password1.errors %}{{ form.password1.errors }}{% endif %}
+            <input type="password" placeholder="Підтвердіть пароль" name="password2" required>
+            {% if form.password2.errors %}{{ form.password2.errors }}{% endif %}
+            <input type="submit" class="button" value="Реєстрація">
         </form>
         <div class="signup">
             <span class="signup">Вже маєте аккаунт?

@@ -12,8 +12,8 @@
             {% if form.non_field_errors %}
                 <p>{{ form.non_field_errors }}</p>
             {% endif %}
-            <input type="text" name="username" value="{% if form.username.value %}{{ form.username.value }}{% endif %}" placeholder="Введіть логін">
-            <input type="password" name="password" placeholder="Введіть пароль">
+            <input type="text" name="username" value="{% if form.username.value %}{{ form.username.value }}{% endif %}" placeholder="Введіть логін" required>
+            <input type="password" name="password" placeholder="Введіть пароль" required>
             <a href="#">Забули пароль?</a>
             <input type="submit" class="button" value="Увійти">
         </form>
