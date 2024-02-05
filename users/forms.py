@@ -23,6 +23,7 @@ class UserProfileForm(UserChangeForm):
     first_name = forms.CharField(required=False)
     last_name = forms.CharField(required=False)
     email = forms.EmailField(required=False)
+    photo = forms.ImageField(required=False)
     
     class Meta:
         model = User
@@ -30,4 +31,5 @@ class UserProfileForm(UserChangeForm):
             'first_name',
             'last_name',
             'email',
+            'photo',
         ]

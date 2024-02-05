@@ -3,9 +3,10 @@
 
 {% block content %}
 <div class="user-info">
+    <img src="{% if 'https%3A/' in user_info.photo.url %}{{ user_info.photo }}{% else %}{{ user_info.photo.url }}{% endif %}" alt="{{ user_info.username }}_photo" width="210" height="210"/>
     <h2 class='username-in-profile'>{{ user_info.username }}</h2>
     {% if user == user_info %}
-    <form action="{% url 'user:profile' username=user_info.username %}" method="POST">
+    <form action="{% url 'user:profile' username=user_info.username %}" method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         <label for="first_name">Ім'я:</label>
         <input type="text" id="first_name" style="left: 70px;" name="first_name" value="{% if form.first_name.value %}{{ form.first_name.value }}{% endif %}"><br>
@@ -16,6 +17,8 @@
         {% if form.email.errors %}
             {{ form.email.errors }}
         {% endif %}
+        <label for="profile_photo">Фото профілю:</label>
+        <input type="file" id="profile_photo" name="photo"><br>
         <input type="submit" value="Зберегти">
     </form>
     {% endif %}

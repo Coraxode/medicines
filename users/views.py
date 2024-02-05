@@ -57,7 +57,7 @@ def profile(request, username):
         return JsonResponse({'message': 'Not a valid username'}, status=404)
 
     if request.method == 'POST':
-        form = UserProfileForm(data=request.POST, instance=user)
+        form = UserProfileForm(data=request.POST, instance=user, files=request.FILES)
         if form.is_valid():
             form.save()
             return HttpResponseRedirect(reverse('user:profile', kwargs={'username': user.username}))

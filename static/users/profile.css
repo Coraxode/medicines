@@ -7,6 +7,16 @@
     border-radius: 15px;
 }
 
+.user-info {
+    min-height: 210px;
+}
+
+.user-info img {
+    float: left;
+    margin-right: 20px;
+    border-radius: 15px;
+}
+
 #first_name,
 #last_name,
 #email {
@@ -15,6 +25,10 @@
 }
 
 #email {
+    margin-bottom: 10px;
+}
+
+#profile_image {
     margin-bottom: 10px;
 }
 
