@@ -1,7 +1,24 @@
-.user-info {
+.user-info,
+.user-favourites-info {
     margin: 15px auto;
-    min-height: 50vh;
-    width: 60%;
+    width: 63%;
     padding: 15px;
     background-color: pink;
+    border-radius: 15px;
+}
+
+#first_name,
+#last_name,
+#email {
+    margin-bottom: 5px;
+    position: relative;
+}
+
+#email {
+    margin-bottom: 10px;
+}
+
+.username-in-profile {
+    margin: 0px;
+    margin-bottom: 10px;
 }

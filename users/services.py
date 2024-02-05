@@ -1,3 +1,4 @@
+from django.http import JsonResponse
 from .models import User
 from main.models import Medicine
 
@@ -13,4 +14,6 @@ def add_to_favourites(username, medicine_id) -> None:
 
 
 def get_user_by_username(username):
-    return User.objects.get(username=username)
+    if User.objects.filter(username=username):
+        return User.objects.get(username=username)
+    return False

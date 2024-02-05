@@ -23,6 +23,9 @@
             {% else %}
                 <input class='user-button' type='button' value='Увійти' onclick="window.location.href = '{% url 'user:login' %}';">
             {% endif %}
+            {% if user.is_admin or user.is_staff or user.is_superuser %}
+                <input class='user-button' type='button' value='Адмін. панель' onclick="window.location.href = '{% url 'admin:index' %}';">
+            {% endif %}
         </div>
     </header>
     <main>

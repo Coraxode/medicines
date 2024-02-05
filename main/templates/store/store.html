@@ -64,7 +64,7 @@
                 {% if user.is_authenticated %}
                     <div class="buy-favourites-buttons-block">
                         <form class="buy-from-mp-form">
-                            <input class="buy-from-mp-button" type="button" onclick="alert('Не готово!'); event.stopPropagation();" value="Придбати">
+                            <input class="buy-from-mp-button" type="button" onclick="alert('Не готово!'); event.stopPropagation();" value="В корзину">
                         </form>
                         <form method="GET" action="/store/" class="add-to-favourites-mp-form">
                             <input type="hidden" name="username" value="{{ user.username }}">

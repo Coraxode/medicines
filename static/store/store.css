@@ -5,6 +5,7 @@
     width: 16%;
     height: 100%;
     background-color: pink;
+    border-radius: 15px;
 }
 .main { 
     position: absolute; 
@@ -20,7 +21,7 @@
 .medicine {
     display: inline-block;
     width: 175px; 
-    border: 1px solid black;
+    border: 1px solid rgb(201, 201, 201);
     border-radius: 0.4em;
     padding: 5px;
     margin: 5px;
@@ -64,6 +65,11 @@
 .buy-from-mp-button {
     width: 95%;
     font-size: 10px;
+    border-radius: 5px;
+}
+
+.buy-from-mp-button {
+    background-color: rgb(46, 170, 46);
 }
 
 .add-to-favourites-mp-form,
@@ -118,3 +124,5 @@
 }
 
 .clear-filters-button:hover .dropbtn {background-color: #3e8e41;}
+
+.medicine:hover {border: 1px solid black;}
