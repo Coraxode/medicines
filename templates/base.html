@@ -20,7 +20,7 @@
             {% if user.is_authenticated %}
                 <a class="username" href="{% url 'user:profile' username=user.username %}">{{ user.username }}</a>
                 <input class='user-button' type='button' value='Вийти' onclick="window.location.href = '{% url 'user:logout' %}';">
-                <input class='user-button' type='button' value='Корзина' onclick="alert('Корзина!');">
+                <input class='user-button' type='button' value='Корзина' onclick="window.location.href =  '{% url 'cart:cart' %}';">
             {% else %}
                 <input class='user-button' type='button' value='Увійти' onclick="window.location.href = '{% url 'user:login' %}';">
             {% endif %}
@@ -31,7 +31,7 @@
     </header>
     <main>
         {% block content %}{% endblock %}
-        <script>check_is_in_favourites({{ user.get_fav_list }})</script>
+        <script>check_is_in_favourites_and_cart({{ user.get_fav_list }}, {{ user.get_cart_list }})</script>
     </main>
 </body>
 </html>

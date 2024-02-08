@@ -57,12 +57,20 @@ function add_search_event() {
     })
 }
 
-function check_is_in_favourites(favourites_list) {
+function check_is_in_favourites_and_cart(favourites_list, cart_list) {
     for (let i = 0; i < favourites_list.length; i++) {
-        btn = document.getElementById("add-to-favourites-mp-button-" + favourites_list[i]);
+        btn = document.getElementById("add-to-favourites-button-" + favourites_list[i]);
         if (btn) {
             btn.value = "В улюблених";
             btn.style.backgroundColor = "orange";
+        }
+    }
+
+    for (let i = 0; i < cart_list.length; i++) {
+        btn = document.getElementById("add-to-cart-button-" + cart_list[i]);
+        if (btn) {
+            btn.value = "В корзині";
+            btn.style.backgroundColor = "green";
         }
     }
 }

@@ -1,0 +1,16 @@
+<div class="buy-favourites-buttons-block">
+    <form method="POST" action="{% url 'cart:cart_change' %}" class="add-to-cart-form">
+        {% csrf_token %}
+        <input type="hidden" name="username" value="{{ user.username }}">
+        <input type="hidden" name="medicine_id" value="{{ p.id }}">
+        <input type="hidden" name="url" value="{{ request.build_absolute_uri }}">
+        <input id="add-to-cart-button-{{ p.id }}" class="add-to-cart-button" type="submit" onclick="event.stopPropagation();" value="В корзину">
+    </form>
+    <form method="POST" action="{% url 'store:store' %}" class="add-to-favourites-form">
+        {% csrf_token %}
+        <input type="hidden" name="username" value="{{ user.username }}">
+        <input type="hidden" name="medicine_id" value="{{ p.id }}">
+        <input type="hidden" name="url" value="{{ request.build_absolute_uri }}">
+        <input id="add-to-favourites-button-{{ p.id }}" class="add-to-favourites-button" type="submit" onclick="event.stopPropagation();" value="До улюблених">
+    </form>
+</div>

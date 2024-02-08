@@ -1,0 +1,14 @@
+<div class='medicine' onclick="location.href='{% url 'store:medicine_page' id=p.id %}';">
+    <img src="{% if 'https%3A/' in p.photo.url %}{{ p.photo }}{% else %}{{ p.photo.url }}{% endif %}" alt="{{ p.name }}" width="175" height="175"/> <br>
+    <label style='font-weight: 450;'>{{ p.name }}</label> <br><br>
+    <label style='font-size: 17px; font-weight: 600;'>{{ p.price }} грн</label>
+    {% if user.is_authenticated %}
+        {% if 'profile' in request.path %}
+            {% if user == user_info %}
+                {% include 'includes/buttons_block_for_medicine.html' %}
+            {% endif %}
+        {% else %}
+            {% include 'includes/buttons_block_for_medicine.html' %}
+        {% endif %}
+    {% endif %}
+</div>

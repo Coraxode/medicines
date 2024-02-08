@@ -9,9 +9,9 @@ def index(request):
 
 
 def store(request):
-    if request.GET.get('add_to_favourites'):
-        add_to_favourites(request.GET.get('username'), request.GET.get('medicine_id'))
-        return redirect(request.GET.get('url'))
+    if request.POST:
+        add_to_favourites(request.POST.get('username'), request.POST.get('medicine_id'))
+        return redirect(request.POST.get('url'))
 
     medicines = search_medicines(request)
     medicines['filters'] = get_info_for_filters(medicines['medicines'])

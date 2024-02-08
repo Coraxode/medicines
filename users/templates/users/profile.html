@@ -27,25 +27,7 @@
     <p>Вибране:</p>
     <div>
     {% for p in user_info.favourites.all %}
-        <div class='medicine' onclick="location.href='{% url 'store:medicine_page' id=p.id %}';">
-            <img src="{% if 'https%3A/' in p.photo.url %}{{ p.photo }}{% else %}{{ p.photo.url }}{% endif %}" alt="{{ p.name }}" width="175" height="175"/> <br>
-            <label style='font-weight: 450;'>{{ p.name }}</label> <br><br>
-            <label style='font-size: 17px; font-weight: 600;'>{{ p.price }} грн</label>
-            {% if user.is_authenticated and user == user_info %}
-                <div class="buy-favourites-buttons-block">
-                    <form class="buy-from-mp-form">
-                        <input class="buy-from-mp-button" type="button" onclick="alert('Не готово!'); event.stopPropagation();" value="В корзину">
-                    </form>
-                    <form action="{% url 'store:store' %}" class="add-to-favourites-mp-form">
-                        <input type="hidden" name="username" value="{{ user.username }}">
-                        <input type="hidden" name="medicine_id" value="{{ p.id }}">
-                        <input type="hidden" name="url" value="{{ request.build_absolute_uri }}">
-                        <input type="hidden" name="add_to_favourites" value=True>
-                        <input id="add-to-favourites-mp-button-{{ p.id }}" class="add-to-favourites-mp-button" type="submit" onclick="event.stopPropagation();" value="До улюблених">
-                    </form>
-                </div>
-            {% endif %}
-        </div>
+        {% include 'includes/medicine.html' %}
     {% endfor %}
     </div>
 </div>

@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    {% for p in user.cart.all %}
+        {% include 'includes/medicine.html' %}
+    {% endfor %}
+{% endblock %}
