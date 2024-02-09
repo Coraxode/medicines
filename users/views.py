@@ -3,8 +3,8 @@ from django.shortcuts import redirect, render
 from django.contrib import auth
 from django.urls import reverse
 from users.forms import UserLoginForm, UserProfileForm, UserSignupForm
-from .services import get_user_by_username
 from django.contrib.auth.decorators import login_required
+from users.models import User
 
 
 def login(request):
@@ -52,7 +52,7 @@ def signup(request):
 
 @login_required
 def profile(request, username):
-    user = get_user_by_username(username)
+    user = User.get_user_by_username(username)
     if not user:
         return JsonResponse({'message': 'Not a valid username'}, status=404)
 

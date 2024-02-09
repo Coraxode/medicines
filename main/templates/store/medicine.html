@@ -12,4 +12,31 @@
         <p class='other-medicine-info'>Країна: <span>{{ medicine.country_of_origin }}</span></p>
     </div>
 </div>
+<div class="medicine-comments-block">
+    <form class="comment-form" method="POST" action="{% url 'store:medicine_page' id=medicine.id %}">
+        {% csrf_token %}
+        <label for="comment-input">Залишити коментарій:</label><br>
+        <textarea id="comment-input" name="comment"></textarea>
+        <input type="hidden" name="username" value="{{ user.username }}">
+        <input type="hidden" name="url" value="{{ request.build_absolute_uri }}">
+        <input type="submit" value="Коментувати">
+    </form>
+    {% for comment in comments %}
+        <div class="medicine-comment">
+            <img src="{{ comment.user.photo.url }}" width="50" height="50"/>
+            <strong>{{ comment.user.username }}</strong>
+            {{ comment.date_posted.date }}<br>
+            {{ comment.comment }}
+        </div>
+        {% if comment.user == request.user %}
+            <form method="POST" action="{% url 'store:medicine_page' id=medicine.id %}">
+                {% csrf_token %}
+                <input type="hidden" name="is_delete_comment" value=True>
+                <input type="hidden" name="comment_id" value="{{ comment.id }}">
+                <input type="hidden" name="url" value="{{ request.build_absolute_uri }}">
+                <input type="submit" value="Видалити">
+            </form>
+        {% endif %}
+    {% endfor %}
+</div>
 {% endblock %}

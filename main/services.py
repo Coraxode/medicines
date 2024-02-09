@@ -1,4 +1,5 @@
 from .models import Medicine, Category, Form, CountryOfOrigin
+from users.models import Comment, User
 
 
 def get_info_for_filters(medicines) -> dict:
@@ -34,3 +35,18 @@ def search_medicines(request=None, search_by_id=False) -> dict:
         prescription=request.GET.getlist('prescription', [0, 1]),
         order_by=request.GET.get('order_by', 'id')
     )}
+
+
+def add_comment(username, medicine, comment):
+    user = User.get_user_by_username(username)
+    
+    if user:
+        Comment.objects.create(user=user, medicine=medicine, comment=comment)
+
+
+def delete_comment(comment_id):
+    Comment.objects.get(id=comment_id).delete()
+
+
+def get_all_comments_about_medicine(medicine):
+    return Comment.objects.filter(medicine=medicine).order_by('-date_posted')
