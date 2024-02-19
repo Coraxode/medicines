@@ -9,13 +9,6 @@ class User(AbstractUser):
     cart = models.ManyToManyField(Medicine, help_text='Товари в корзині', blank=True, related_name='cart')
     photo = models.ImageField(upload_to='users_photos', help_text="Фото користувача", default='static_photos/default_profile_photo.jpg', blank=True)
 
-    @classmethod
-    def get_user_by_username(cls, username):
-        try:
-            return cls.objects.get(username=username)
-        except cls.DoesNotExist:
-            return None
-
     def get_fav_list(self):
         return [fav.id for fav in self.favourites.all()]
 

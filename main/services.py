@@ -38,10 +38,8 @@ def search_medicines(request=None, search_by_id=False) -> dict:
 
 
 def add_comment(username, medicine, comment):
-    user = User.get_user_by_username(username)
-    
-    if user:
-        Comment.objects.create(user=user, medicine=medicine, comment=comment)
+    user = User.objects.get(username=username)
+    Comment.objects.create(user=user, medicine=medicine, comment=comment)
 
 
 def delete_comment(comment_id):

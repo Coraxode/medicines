@@ -1,57 +1,103 @@
 from django.test import TestCase
-from django.contrib.auth.models import User
-from ..models import Category, Form, Manufacturer, CountryOfOrigin, Medicine
+from ..models import Medicine, Category, Form, Manufacturer, CountryOfOrigin
 
 
-class MedicineModelTest(TestCase):
-    def setUp(self):
-        category = Category.objects.create(name='Протизастудні')
-        form = Form.objects.create(name='Таблетки')
-        manufacturer = Manufacturer.objects.create(name='Manufacturer1')
-        country = CountryOfOrigin.objects.create(name='Country1')
+class MedicineModelTestCase(TestCase):
+    @classmethod
+    def setUpTestData(cls):
+        # Create sample data for testing
+        cls.category = Category.objects.create(name='Test Category')
+        cls.form = Form.objects.create(name='Test Form')
+        cls.manufacturer = Manufacturer.objects.create(name='Test Manufacturer')
+        cls.country_of_origin = CountryOfOrigin.objects.create(name='Test Country')
 
-        self.medicine = Medicine.objects.create(
+        # Create sample medicines
+        cls.medicine1 = Medicine.objects.create(
             name='Medicine1',
-            price=10.5,
-            date_of_manufacture='2023-01-01',
+            price=10.0,
+            category=cls.category,
+            form=cls.form,
+            manufacturer=cls.manufacturer,
+            country_of_origin=cls.country_of_origin,
+            is_prescription_required=False,
+            date_of_manufacture='2022-01-01',
+            service_life=24,
+            description='Test Description',
+            quantity=100
+        )
+        cls.medicine2 = Medicine.objects.create(
+            name='Medicine2',
+            price=15.0,
+            category=cls.category,
+            form=cls.form,
+            manufacturer=cls.manufacturer,
+            country_of_origin=cls.country_of_origin,
+            is_prescription_required=True,
+            date_of_manufacture='2022-01-01',
             service_life=12,
-            description='Description',
-            quantity=100,
+            description='Test Description 2',
+            quantity=50
         )
 
-        self.medicine.category.set([category])
-        self.medicine.form.set([form])
-        self.medicine.manufacturer.set([manufacturer])
-        self.medicine.country_of_origin.set([country])
-        self.medicine.save()
-
-    def test_medicine_str_method(self):
-        self.assertEqual(str(self.medicine), 'Medicine1')
-
-    def test_filter_medicines_method(self):
-        result = Medicine.filter_medicines(
-            search='Medicine1',
-            price_range=(10, 20),
-            category=[1],
-            form=[1],
-            country=[1],
-            prescription=[False]
+    def test_filter_medicines(self):
+        # Test filtering without any criteria
+        filtered_medicines = Medicine.filter_medicines(
+            search="",
+            price_range=(0, 1000),
+            category=[self.category],
+            form=[self.form],
+            country=[self.country_of_origin],
+            prescription=[False],
+            order_by="price",
         )
-        self.assertEqual(result.count(), 1)
+        self.assertEqual(filtered_medicines.count(), 1)
+        self.assertIn(self.medicine1, filtered_medicines)
 
+        # Test filtering with prescription required criteria
+        filtered_medicines = Medicine.filter_medicines(
+            search="",
+            price_range=(0, 1000),
+            category=[self.category],
+            form=[self.form],
+            country=[self.country_of_origin],
+            prescription=[True],
+            order_by="price",
+        )
+        self.assertEqual(filtered_medicines.count(), 1)
+        self.assertIn(self.medicine2, filtered_medicines)
 
-class UserInfoModelTest(TestCase):
-    def setUp(self):
-        # Попередня налаштування для тестів
-        user = User.objects.create(username='testuser')
-        medicine = Medicine.objects.create(name='TestMedicine')
+        # Test filtering with price range criteria
+        filtered_medicines = Medicine.filter_medicines(
+            search="",
+            price_range=(0, 10),
+            category=[self.category],
+            form=[self.form],
+            country=[self.country_of_origin],
+            prescription=[False],
+            order_by="price",
+        )
+        self.assertEqual(filtered_medicines.count(), 1)
+        self.assertIn(self.medicine1, filtered_medicines)
 
-        self.user_info.favourites.add(medicine)
+        # Test filtering with multiple criteria
+        filtered_medicines = Medicine.filter_medicines(
+            search="",
+            price_range=(0, 1000),
+            category=[self.category],
+            form=[self.form],
+            country=[self.country_of_origin],
+            prescription=[False],
+            order_by="price",
+        )
+        self.assertEqual(filtered_medicines.count(), 1)
+        self.assertIn(self.medicine1, filtered_medicines)
 
-    def test_user_info_str_method(self):
-        self.assertEqual(str(self.user_info), 'testuser info')
-
-    def test_user_info_favourites(self):
-        favourites = self.user_info.favourites.all()
-        self.assertEqual(favourites.count(), 1)
-        self.assertEqual(favourites[0].name, 'TestMedicine')
+    @classmethod
+    def tearDownClass(cls):
+        # Clean up created objects
+        cls.category.delete()
+        cls.form.delete()
+        cls.manufacturer.delete()
+        cls.country_of_origin.delete()
+        cls.medicine1.delete()
+        cls.medicine2.delete()

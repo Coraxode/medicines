@@ -52,7 +52,7 @@ def signup(request):
 
 @login_required
 def profile(request, username):
-    user = User.get_user_by_username(username)
+    user = User.objects.get(username=username)
     if not user:
         return JsonResponse({'message': 'Not a valid username'}, status=404)
 

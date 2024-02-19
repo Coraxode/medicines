@@ -23,6 +23,8 @@ def store(request):
 
 def medicine_page(request, id):
     medicine = search_medicines(search_by_id=id)
+    if not medicine['medicine']:
+        return JsonResponse({'message': 'Not a valid ID'}, status=404)
     
     if request.POST:
         if request.POST.get('is_delete_comment'):
@@ -32,8 +34,6 @@ def medicine_page(request, id):
 
         return redirect(request.POST.get('url'))
     
-    if not medicine['medicine']:
-        return JsonResponse({'message': 'Not a valid ID'}, status=404)
     context = medicine
     context['title'] = medicine['medicine'].name
     context['comments'] = get_all_comments_about_medicine(medicine['medicine'])

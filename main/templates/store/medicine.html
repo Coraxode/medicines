@@ -6,10 +6,10 @@
     <div class='medicine-text-info'>
         <p class='medicine-name'>{{ medicine.name }}</p>
         <p class='medicine-price'>{{ medicine.price }} грн</p>
-        <p class='other-medicine-info'>Категорія: <span>{{ medicine.category }}</span></p>
-        <p class='other-medicine-info'>Форма випуску: <span>{{ medicine.form }}</span></p>
-        <p class='other-medicine-info'>Виробник: <span>{{ medicine.manufacturer }}</span></p>
-        <p class='other-medicine-info'>Країна: <span>{{ medicine.country_of_origin }}</span></p>
+        <p class='other-medicine-info'>Категорія: <a href="{% url 'store:store' %}?category={{ medicine.category.id }}">{{ medicine.category }}</a></p>
+        <p class='other-medicine-info'>Форма випуску: <a href="{% url 'store:store' %}?form={{ medicine.form.id }}">{{ medicine.form }}</a></p>
+        <p class='other-medicine-info'>Країна: <a href="{% url 'store:store' %}?country={{ medicine.country_of_origin.id }}">{{ medicine.country_of_origin }}</a></p>
+        <p class='other-medicine-info'>Виробник: <a>{{ medicine.manufacturer }}</a></p>
     </div>
 </div>
 <div class="medicine-comments-block">
