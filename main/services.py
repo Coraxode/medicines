@@ -22,9 +22,6 @@ def get_info_for_filters(medicines) -> dict:
 def search_medicines(request=None, search_by_id=False) -> dict:
     """ Search for medicines based on various filters. """
 
-    if search_by_id:
-        return {'medicine': Medicine.objects.filter(id=search_by_id).first()}
-
     return {'medicines': Medicine.filter_medicines(
         search=request.GET.get('search', ''),
         price_range=(request.GET.get('minp', 0),
@@ -48,3 +45,7 @@ def delete_comment(comment_id):
 
 def get_all_comments_about_medicine(medicine):
     return Comment.objects.filter(medicine=medicine).order_by('-date_posted')
+
+
+def search_medicine_by_id(id):
+    return {'medicine': Medicine.objects.filter(id=id).first()}

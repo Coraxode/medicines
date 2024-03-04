@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import JsonResponse
-from .services import add_comment, delete_comment, get_all_comments_about_medicine, search_medicines, get_info_for_filters
+from .services import add_comment, delete_comment, get_all_comments_about_medicine, search_medicines, get_info_for_filters, search_medicine_by_id
 from users.services import add_to_favourites
 
 
@@ -22,7 +22,7 @@ def store(request):
 
 
 def medicine_page(request, id):
-    medicine = search_medicines(search_by_id=id)
+    medicine = search_medicine_by_id(id=id)
     if not medicine['medicine']:
         return JsonResponse({'message': 'Not a valid ID'}, status=404)
     
